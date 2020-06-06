@@ -24,7 +24,7 @@ function getAllStr(str, start, end) {
 }
 
 function VnExpress() {
-    const linkRSS = 'https://vnexpress.net/rss/tin-moi-nhat.rss';
+    const linkRSS = 'https://genk.vn/rss/internet.chn.rss';
     const minWord = 30;
     const maxWord = 170;
 
@@ -33,7 +33,7 @@ function VnExpress() {
         let feed = await parser.parseURL(linkRSS);
         let news = [];
         for (const rss of feed.items) {
-            if(rss.link.includes('https://vnexpress.net')) { //not get news from english/photo page
+            if(rss.link.includes('https://genk.vn/')) { //not get news from english/photo page
                 let imgLink = getStr(rss.content, '<img src="','"');
                 if (imgLink && !imgLink.includes('gif')) {
                     let response = await fetch(rss.link);
